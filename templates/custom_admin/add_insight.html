@@ -1,0 +1,24 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Insight</title>
+    <script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'custom_admin/style.css' %}">
+</head>
+<body>
+    <div class="container">
+        <h1>Add New Insight</h1>
+        <form method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <script>
+                CKEDITOR.replace('id_content');
+            </script>
+            <button type="submit">Save</button>
+        </form>
+    </div>
+</body>
+</html>

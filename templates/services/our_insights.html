@@ -1,0 +1,40 @@
+{% extends 'base2.html' %}
+
+{% block title %}{{ page.industry.name }} Insights{% endblock %}
+
+{% block content %}
+    {% for category in categories %}
+        {# Alternate background colors #}
+        <div class="py-4" style="background-color: {% if forloop.counter|divisibleby:2 %} #c7c3c3 {% else %} white {% endif %};">
+            <h2 class="text-start ms-5 text-black">
+                {{ category.name }}</h2>
+            <div class="row d-flex flex-wrap justify-content-center gx-0 gy-0">
+                {% for insight in category.insights.all %}
+                    <div class="col-md-3 col-sm-6 p-0">
+                        <div class="card h-100 shadow-sm w-100"
+                             style="background-color: {% if forloop.parentloop.counter|divisibleby:2 %} #c7c3c3 {% else %} white {% endif %}; color: {% if forloop.parentloop.counter|divisibleby:2 %} white {% else %} black {% endif %};">
+                            {% if insight.image %}
+                                <img src="{{ insight.image.url }}" class="card-img-top img-fluid"
+                                     style="max-height: 180px; object-fit: cover;" alt="{{ insight.title }}">
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">
+                                    <a href="{% if page.service.type == 'industry' %}
+                                    {% url 'industry_insight_detail' service_slug=page.service.slug insight_id=insight.id %}
+                                 {% else %}
+                                    {% url 'capability_insight_detail' service_slug=page.service.slug insight_id=insight.id %}
+                                 {% endif %}" class="text-decoration-none"
+                                       style="color: {% if forloop.parentloop.counter|divisibleby:2 %} white {% else %} black {% endif %};">
+                                        {{ insight.title }}
+                                    </a>
+                                </h5>
+                                <p class="card-text">{{ insight.description|truncatewords:20 }}</p>
+                            </div>
+                            <p class="publish-date">Published on: {{ insight.published_date }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            </div>
+        </div>
+    {% endfor %}
+{% endblock %}

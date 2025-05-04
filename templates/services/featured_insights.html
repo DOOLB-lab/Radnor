@@ -1,0 +1,30 @@
+<!-- featured_insights.html -->
+{% extends 'base3.html' %}
+
+{% block title %}Featured Insights: {{ category.name }}{% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h1 class="my-4">Featured Insights: {{ category.name }}</h1>
+        <div class="row">
+            {% for insight in category.insights.all %}
+                <div class="col-md-4 mb-4">
+                    <div class="card h-100 shadow-sm">
+                        {% if insight.image %}
+                            <img src="{{ insight.image.url }}" class="card-img-top" alt="{{ insight.title }}" style="height: 200px; object-fit: cover;">
+                        {% endif %}
+                        <div class="card-body">
+                            <h5 class="card-title">
+                                <a href="{% url 'capability_insight_detail' service_slug=category.service.slug insight_id=insight.id %}" class="text-decoration-none text-dark">
+                                    {{ insight.title }}
+                                </a>
+                            </h5>
+                            <p class="card-text">{{ insight.description|truncatewords:20 }}</p>
+                        </div>
+                       
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

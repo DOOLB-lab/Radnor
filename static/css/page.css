@@ -1,0 +1,54 @@
+.how-we-help {
+    text-align: center;
+    padding: 40px 20px;
+}
+.how-we-help h2 {
+    font-size: 30px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    color: rgb(192, 137, 36);
+}
+
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    border-radius: 10px;
+    padding: 30px; /* Increased padding for more height */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Softer shadow */
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    width: 320px; /* Adjust width if needed */
+    min-height: 400px; /* Increased height */
+    text-align: left;
+    cursor: pointer;
+    border: none; /* Removes any border */
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+.card a {
+    text-decoration: none;
+    color: black;
+    display: block;
+}
+
+.card h3 {
+    font-size: 23px; /* Increased font size */
+    font-weight: bold;
+}
+
+.card p {
+    font-size: 20px; /* Increased font size */
+    color: #555;
+}
+
+
+

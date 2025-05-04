@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    {% if latest_insight %}
+        <div class="hero" style="background-image: url('{% if latest_insight.image %}{{ latest_insight.image.url }}{% else %}{% static 'default_image.jpg' %}{% endif %}');">
+            <div class="hero-content">
+                <h1>{{ latest_insight.title }}</h1>
+                <p>{{ latest_insight.description }}</p>
+                <a href="{% url 'capability_insight_detail' service_slug=latest_insight.page.service.slug insight_id=latest_insight.id %}">
+                    Read more →
+                </a>
+            </div>
+        </div>
+    {% else %}
+        <div class="hero" style="background-image: url('{% static "default_image.jpg" %}');">
+            <div class="hero-content">
+                <h1>No Insights Available</h1>
+                <p>Check back later for the latest insights.</p>
+            </div>
+        </div>
+    {% endif %}
+
+    {% for insight in older_insights %}
+        <div class="insight-section">
+            <div class="insight-text">
+                <h2>{{ insight.title }}</h2>
+                <p>{{ insight.description }}</p>
+                <a href="{% url 'capability_insight_detail' service_slug=insight.page.service.slug insight_id=insight.id %}">
+                    Read more →
+                </a>
+            </div>
+            <div class="insight-image">
+                {% if insight.image %}
+                    <img src="{{ insight.image.url }}" alt="{{ insight.title }}">
+                {% else %}
+                    <img src="{% static 'default_image.jpg' %}" alt="Default Image">
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+
+{% endblock %}

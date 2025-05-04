@@ -1,0 +1,36 @@
+{% extends 'base2.html' %}
+
+{% block title %}{{ insight.title }}{% endblock %}
+
+{% block content %}
+
+
+    <!-- Banner -->
+    <div class="insight-banner"
+     style="background-image: {% if insight.image %}url('{{ insight.image.url }}'){% else %}none{% endif %};">
+        <div class="overlay">
+            <h1>{{ insight.title }}</h1>
+            <p>{{ insight.description }}</p>
+        </div>
+    </div>
+    <div class="insight-detail">
+        <div class="insight-content">
+            {{ insight.content|safe }}
+        </div>
+    </div>
+    <p class="publish-date">Published on: {{ insight.published_date }}</p>
+</div>
+    
+    </div>
+<!-- <div class="container mt-5">
+    <h1>{{ insight.title }}</h1>
+    <p class="text-muted">{{ insight.description }}</p>
+    {% if insight.image %}
+    <img src="{{ insight.image.url }}" class="img-fluid rounded mb-4" alt="{{ insight.title }}">
+    {% endif %}
+    <div>
+        {{ insight.content|safe }}
+    </div>
+</div> -->
+{% endblock %}
+

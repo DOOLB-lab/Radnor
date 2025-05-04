@@ -1,0 +1,51 @@
+{% extends 'base2.html' %}
+
+{% block title %}{{ page.service.name }} Page{% endblock %}
+
+{% block content %}
+    <!-- Banner -->
+    <div class="insight-banner" style="background-image: url('{{ page.banner_image.url }}');">
+        <div class="overlay">
+            <h1>{{ page.banner_title }}</h1>
+            <p>{{ page.banner_subtitle }}</p>
+        </div>
+    </div>
+    <div class="insight-detail">
+        <div class="insight-content">
+            {{ page.content|safe }} 
+        </div>
+    </div>
+
+    <!-- How We Help Clients (Only show if cards exist) -->
+    {% if cards %}
+    <div class="how-we-help">
+        <h2>How We Help Clients</h2>
+        <div class="cards">
+            {% for card in cards %}
+                <div class="card">
+                    <a href="{% url 'card_detail' card.id %}">
+                        <h3>{{ card.title }} →</h3>
+                    </a>
+                    <br>
+                    <p>{{ card.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+
+    <!-- What We Do (Only show if what_we_do exists) -->
+    {% if what_we_do %}
+    <div class="what-we-do">
+        <h2>What We Do</h2>
+        <div class="what-we-do-grid">
+            {% for item in what_we_do %}
+                <div class="what-we-do-item">
+                    <h3>{{ item.title }}</h3>
+                    <p>{{ item.description }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% endif %}
+{% endblock %}

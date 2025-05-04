@@ -1,0 +1,47 @@
+.insight-detail {
+    max-width: 1400px;
+    margin: 0 auto;  
+    padding: 20px;
+   text-align: left; 
+}
+.insight-banner {
+    position: relative;
+    background-size: cover;
+    background-position: center;
+    height: 400px; /* Adjust as needed */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: black;
+    text-align: center;
+}
+
+.overlay {
+    /* background: rgba(0, 0, 0, 0.5); */
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.overlay h1 {
+    color: rgb(192, 137, 36);
+}
+
+.overlay p {
+    color: white;
+}
+
+
+.insight-content {
+    padding: 30px;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 1400px; 
+}
+
+.publish-date {
+    font-style: italic;
+    color: #777;
+    margin-top: 20px;
+}
+
+

@@ -1,0 +1,50 @@
+{% load static %}
+
+<div class="navbar">
+    <a href="{% url 'home' %}">
+        <img class="logo" src="{% static './images/Transparent-Radnor Consulting_edited_edi.png' %}" alt="Logo">
+    </a>
+    <div class="nav-links">
+        <!-- Industries Dropdown -->
+        <div class="dropdown">
+            <a href="#">Industries</a>
+            <div class="dropdown-content">
+                {% for industry in industries %}
+                    <a href="{% url 'industry_how_we_help_clients' service_slug=industry.slug %}">{{ industry.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Capabilities Dropdown -->
+        <div class="dropdown">
+            <a href="#">Capabilities</a>
+            <div class="dropdown-content">
+                {% for capability in capabilities %}
+                    <a href="{% url 'capability_how_we_help_clients' service_slug=capability.slug %}">{{ capability.name }}</a>
+                {% endfor %}
+            </div>
+        </div>
+
+        <!-- Featured Insights Dropdown -->
+        <div class="dropdown">
+            <a href="#">Featured Insights</a>
+            <div class="dropdown-content">
+                {% for category in featured_categories %}
+                    <a href="{% url 'featured_insights' category_id=category.id %}">{{ category.name }}</a>
+                {% empty %}
+                    <a href="#">No categories found</a>
+                {% endfor %}
+            </div>
+        </div>
+        
+        <!-- Other Links -->
+        <a href="#">Locations</a>
+        <a href="#">Careers</a>
+        <a href="#">About Us</a>
+        <a href="#">Blog</a>
+    </div>
+    <div class="right-links">
+        <a href="#">Sign In</a>
+        <a href="#">Subscribe</a>
+    </div>
+</div>

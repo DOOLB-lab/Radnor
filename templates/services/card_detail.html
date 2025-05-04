@@ -1,0 +1,22 @@
+{% extends 'base3.html' %}
+
+{% block title %}{{ card.title }}{% endblock %}
+
+{% block content %}
+
+    <!-- Banner -->
+    <div class="insight-banner"
+     style="background-image: {% if card.image %}url('{{ card.image.url }}'){% else %}none{% endif %};">
+        <div class="overlay">
+            <h1>{{ card.title }}</h1>
+            <p>{{ card.description }}</p>
+        </div>
+    </div>
+    <div class="insight-detail">
+        <div class="insight-content">
+            {{ card.content|safe }} 
+        </div>
+    
+    </div>
+
+{% endblock %}

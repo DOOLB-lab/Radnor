@@ -1,0 +1,38 @@
+{% load static %}
+
+<div class="navbar">
+    <a href="{% url 'home' %}" class="logo-container">
+        <img class="logo" src="{% static 'images/Transparent-Radnor Consulting_edited_edi.png' %}" alt="Logo">
+    </a>
+    <!-- Service Title Above Navigation Links -->
+    <p class="service-title">{{ page.service.name }}</p>
+
+    <!-- Centered Navigation Links -->
+    <p class="service-title">{{ page.service.name }}</p>
+
+    <!-- Centered Navigation Links -->
+    <div class="nav-links">
+        <!-- How We Help Clients Link -->
+        <a href="{% if page.service.type == 'industry' %}
+        {% url 'industry_how_we_help_clients' service_slug=page.service.slug %}
+     {% else %}
+        {% url 'capability_how_we_help_clients' service_slug=page.service.slug %}
+     {% endif %}"
+class="{% if request.resolver_match.url_name in 'industry_how_we_help_clients capability_how_we_help_clients' %}active{% endif %}">
+How We Help Clients
+</a>
+
+<a href="{% if page.service.type == 'industry' %}
+        {% url 'industry_our_insights' service_slug=page.service.slug %}
+     {% else %}
+        {% url 'capability_our_insights' service_slug=page.service.slug %}
+     {% endif %}"
+class="{% if request.resolver_match.url_name in 'industry_our_insights capability_our_insights' %}active{% endif %}">
+Our Insights
+</a>
+
+        <!-- Other Links -->
+        <a href="#">Our People</a>
+        <a href="#">Contact Us</a>
+    </div>
+</div>

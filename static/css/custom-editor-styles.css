@@ -1,0 +1,14 @@
+/* Make headings wider */
+.cke_editable h1, 
+.cke_editable h2, 
+.cke_editable h3 {
+    width: 100%;
+    max-width: 90%; /* Adjust as needed */
+    margin: 0 auto; /* Center the headings */
+}
+
+/* Keep paragraphs and other text narrower */
+.cke_editable p {
+    max-width: 70%; /* Make paragraphs narrower */
+    margin: 0 auto;
+}
